@@ -44,6 +44,23 @@ To enable the code coverage reports, see [here](https://fpgmaas.github.io/cookie
 
 For more details, see [here](https://fpgmaas.github.io/cookiecutter-poetry/features/cicd/#how-to-trigger-a-release).
 
+## Citation
+
+If you use this project in your research, please cite it using the following BibTeX entry:
+
+```bibtex
+@software{pyhot,
+  author       = {Nakamura, Matthew},
+  title        = {pyhot: Library to control Omega PID Tempreture Controller},
+  month        = feb,
+  year         = 2024,
+  publisher    = {Zenodo},
+  version      = {v0.0.1},
+  doi          = {},
+  url          = {}
+}
+```
+
 ---
 
 Repository initiated with [fpgmaas/cookiecutter-poetry](https://github.com/fpgmaas/cookiecutter-poetry).
