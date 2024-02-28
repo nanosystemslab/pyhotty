@@ -5,7 +5,7 @@
 [![Commit activity](https://img.shields.io/github/commit-activity/m/nanosystemslab/pyhot)](https://img.shields.io/github/commit-activity/m/nanosystemslab/pyhot)
 [![License](https://img.shields.io/github/license/nanosystemslab/pyhot)](https://img.shields.io/github/license/nanosystemslab/pyhot)
 
-Library to control Omega PID Tempreture Controller
+Library to control Omega PID Tempreture Controller. This Python library provides a comprehensive interface for controlling an OMEGA PID temperature controller via Modbus RTU. It supports setting PID parameters, thermocouple types, operational modes, and more. Ideal for precise temperature regulation in industrial and laboratory settings, it simplifies integration with Python projects, enhancing automation and monitoring capabilities.
 
 - **Github repository**: <https://github.com/nanosystemslab/pyhot/>
 - **Documentation** <https://nanosystemslab.github.io/pyhot/>
