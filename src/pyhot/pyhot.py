@@ -1,6 +1,6 @@
 from typing import Union
 
-import minimalmodbus
+import minimalmodbus # type: ignore
 
 
 class Heater:
@@ -104,8 +104,8 @@ class Heater:
         if enable is True:
             self.ser.write_register(672, 1, 0, 16, False)  # PID Adaptive Control
         return
-        self.ser.write_register(672, 0, 0, 16, False)  # PID Adaptive Control
-        return
+        # self.ser.write_register(672, 0, 0, 16, False)  # PID Adaptive Control
+        # return
 
     def set_PID_auto(self, max_rate: float, autotune_timeout: int, PID_setpoint: float) -> None:
         """
