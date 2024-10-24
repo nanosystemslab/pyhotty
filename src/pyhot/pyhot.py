@@ -11,9 +11,9 @@ class Heater:
     This class provides methods for setting PID parameters, thermocouple types,
     operational modes, and more.
 
-    Keyword arguments:
-    port -- serial port where the heater is connected (default "")
-    addr -- modbus address of the heater (default None)
+    Arguments:
+    port -- serial port where the Heater is connected (default "")
+    addr -- modbus address of the Heater (default None)
     """
 
     def __init__(self, port: str = "", addr: Union[int, None] = None):
@@ -31,7 +31,7 @@ class Heater:
                 ) -> None:
         """Set PID parameters for the heater.
 
-        Keyword arguments:
+        Arguments:
         max_rate -- maximum rate of change for the process variable
         dev_gain -- derivative gain of the PID controller
         pro_gain -- proportional gain of the PID controller
@@ -48,17 +48,13 @@ class Heater:
     def set_thermocouple(self, couple_type: int = 1) -> None:
         """Set the type of thermocouple for the heater.
 
-        Keyword arguments:
+        Arguments:
         couple_type -- type of thermocouple (default 1)
         """
         self.ser.write_register(643, couple_type, 0, 16, False)  # Thermocouple Type
 
     def get_temp(self) -> float:
-        """Get the current temperature from the heater.
-
-        Returns:
-        - Current temperature.
-        """
+        """Get the current temperature from the heater."""
         temperature = self.ser.read_float(528, 3, 2)  # Current Input Value
         temperature = "%.4f" % temperature
         temperature = f"{temperature:{6}.{6}}"
@@ -76,7 +72,7 @@ class Heater:
     def set_action(self, action_value: str) -> None:
         """Set the action (direct or reverse) for the PID controller.
 
-        Keyword arguments:
+        Arguments:
         action_value -- action value ("direct" or "reverse")
         """
         if action_value == "direct":
@@ -88,7 +84,7 @@ class Heater:
     def action(self, output_value: str) -> None:
         """Set the action for the Heater output.
 
-        Keyword arguments:
+        Arguments:
         output_value -- output action ("off" or "pid").
         """
         if output_value == "off":
@@ -100,7 +96,7 @@ class Heater:
     def autotune_adaptive(self, enable: bool = False) -> None:
         """Enable or disable adaptive PID tuning.
 
-        Keyword arguments:
+        Arguments:
         enable -- enable or disable adaptive tuning (default False)
         """
         if enable is True:
@@ -116,7 +112,7 @@ class Heater:
                      ) -> None:
         """Set PID parameters for auto-tuning.
 
-        Keyword arguments:
+        Arguments:
         max_rate -- maximum rate of change for the process variable
         autotune_timeout -- timeout for auto-tuning in milliseconds
         pid_setpoint -- setpoint for the PID controller
@@ -131,7 +127,7 @@ class Heater:
     def filter_hold(self, filter_knob: int = 0) -> None:
         """Set the filter value for the heater.
 
-        Keyword arguments:
+        Arguments:
         filter_knob -- filter knob value (default 0)
         """
         filter_knob = int(filter_knob)
