@@ -23,12 +23,12 @@ class Heater:
         self.ser = minimalmodbus.Instrument(port, addr, mode="rtu")
 
     def set_pid(self,
-                max_rate: float,
-                dev_gain: float,
-                pro_gain: float,
-                int_gain: float,
-                pid_setpoint: float
-                ) -> None:
+        max_rate: float,
+        dev_gain: float,
+        pro_gain: float,
+        int_gain: float,
+        pid_setpoint: float
+    ) -> None:
         """Set PID parameters for the heater.
 
         Arguments:
@@ -105,11 +105,9 @@ class Heater:
         # self.ser.write_register(672, 0, 0, 16, False)  # PID Adaptive Control
         # return
 
-    def set_pid_auto(self,
-                     max_rate: float,
-                     autotune_timeout: int,
-                     pid_setpoint: float
-                     ) -> None:
+    def set_pid_auto(
+        self, max_rate: float, autotune_timeout: int, pid_setpoint: float
+    ) -> None:
         """Set PID parameters for auto-tuning.
 
         Arguments:
