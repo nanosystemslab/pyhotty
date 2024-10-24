@@ -86,7 +86,7 @@ class Heater:
         return
 
     def action(self, output_value: str) -> None:
-        """Set the action for the heater output.
+        """Set the action for the Heater output.
 
         Keyword arguments:
         output_value -- output action ("off" or "pid").
@@ -110,9 +110,9 @@ class Heater:
         # return
 
     def set_pid_auto(self,
-                     max_rate: float,
-                     autotune_timeout: int,
-                     pid_setpoint: float
+                    max_rate: float,
+                    autotune_timeout: int,
+                    pid_setpoint: float
                     ) -> None:
         """Set PID parameters for auto-tuning.
 
