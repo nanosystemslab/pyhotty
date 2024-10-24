@@ -22,12 +22,13 @@ class Heater:
         self.addr = addr
         self.ser = minimalmodbus.Instrument(port, addr, mode="rtu")
 
-    def set_pid(self,
+    def set_pid(
+        self,
         max_rate: float,
         dev_gain: float,
         pro_gain: float,
         int_gain: float,
-        pid_setpoint: float
+        pid_setpoint: float,
     ) -> None:
         """Set PID parameters for the heater.
 
