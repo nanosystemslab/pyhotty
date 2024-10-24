@@ -12,8 +12,8 @@ class Heater:
     operational modes, and more.
 
     Arguments:
-    port -- serial port where the Heater is connected (default "")
-    addr -- modbus address of the Heater (default None)
+    port: serial port where the Heater is connected (default "")
+    addr: modbus address of the Heater (default None)
     """
 
     def __init__(self, port: str = "", addr: Union[int, None] = None):
@@ -32,11 +32,11 @@ class Heater:
         """Set PID parameters for the heater.
 
         Arguments:
-        max_rate -- maximum rate of change for the process variable
-        dev_gain -- derivative gain of the PID controller
-        pro_gain -- proportional gain of the PID controller
-        int_gain -- integral gain of the PID controller
-        pid_setpoint -- setpoint for the PID controller
+        max_rate: maximum rate of change for the process variable
+        dev_gain: derivative gain of the PID controller
+        pro_gain: proportional gain of the PID controller
+        int_gain: integral gain of the PID controller
+        pid_setpoint: setpoint for the PID controller
         """
         self.ser.write_float(686, max_rate, 2)
         self.ser.write_float(676, pro_gain, 2)  # P gain
@@ -49,7 +49,7 @@ class Heater:
         """Set the type of thermocouple for the heater.
 
         Arguments:
-        couple_type -- type of thermocouple (default 1)
+        couple_type: type of thermocouple (default 1)
         """
         self.ser.write_register(643, couple_type, 0, 16, False)  # Thermocouple Type
 
@@ -73,7 +73,7 @@ class Heater:
         """Set the action (direct or reverse) for the PID controller.
 
         Arguments:
-        action_value -- action value ("direct" or "reverse")
+        action_value: action value ("direct" or "reverse")
         """
         if action_value == "direct":
             self.ser.write_register(673, 1, 0, 16, False)  # PID Action
@@ -85,7 +85,7 @@ class Heater:
         """Set the action for the Heater output.
 
         Arguments:
-        output_value -- output action ("off" or "pid").
+        output_value: output action ("off" or "pid").
         """
         if output_value == "off":
             self.ser.write_register(1025, 0, 0, 16, False)  # Output 1 Mode
@@ -97,7 +97,7 @@ class Heater:
         """Enable or disable adaptive PID tuning.
 
         Arguments:
-        enable -- enable or disable adaptive tuning (default False)
+        enable: enable or disable adaptive tuning (default False)
         """
         if enable is True:
             self.ser.write_register(672, 1, 0, 16, False)  # PID Adaptive Control
@@ -113,9 +113,9 @@ class Heater:
         """Set PID parameters for auto-tuning.
 
         Arguments:
-        max_rate -- maximum rate of change for the process variable
-        autotune_timeout -- timeout for auto-tuning in milliseconds
-        pid_setpoint -- setpoint for the PID controller
+        max_rate: maximum rate of change for the process variable
+        autotune_timeout: timeout for auto-tuning in milliseconds
+        pid_setpoint: setpoint for the PID controller
         """
         autotune_timeout = autotune_timeout * 1000
         self.ser.write_float(686, max_rate, 2)
@@ -128,7 +128,7 @@ class Heater:
         """Set the filter value for the heater.
 
         Arguments:
-        filter_knob -- filter knob value (default 0)
+        filter_knob: filter knob value (default 0)
         """
         filter_knob = int(filter_knob)
         self.ser.write_register(655, filter_knob, 0, 16, False)  # Filter
