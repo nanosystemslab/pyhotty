@@ -1,51 +1,55 @@
+"""Library for control of a Omega PID Temperature Controller."""
+
 from typing import Union
 
-import minimalmodbus # type: ignore
+import minimalmodbus  # type: ignore
 
 
 class Heater:
-    def __init__(self, port: str = "", addr: Union[int, None] = None):
-        """
-        Constructor for the Heater class.
+    """Create Heater object.
 
-        Parameters:
-        - port: Serial port where the heater is connected.
-        - addr: Modbus address of the heater.
-        """
+    This class provides methods for setting PID parameters, thermocouple types,
+    operational modes, and more.
+
+    Keyword arguments:
+    port -- serial port where the heater is connected (default "")
+    addr -- modbus address of the heater (default None)
+    """
+
+    def __init__(self, port: str = "", addr: Union[int, None] = None):
+        """Constructor for the Heater class."""
         self.port = port
         self.addr = addr
         self.ser = minimalmodbus.Instrument(port, addr, mode="rtu")
 
-    def set_PID(self, max_rate: float, dev_gain: float, pro_gain: float, int_gain: float, PID_setpoint: float) -> None:
-        """
-        Set PID parameters for the heater.
+    def set_pid(self, max_rate: float, dev_gain: float, pro_gain: float,
+                int_gain: float, pid_setpoint: float) -> None:
+        """Set PID parameters for the heater.
 
-        Parameters:
-        - max_rate: Maximum rate of change for the process variable.
-        - dev_gain: Derivative gain of the PID controller.
-        - pro_gain: Proportional gain of the PID controller.
-        - int_gain: Integral gain of the PID controller.
-        - PID_setpoint: Setpoint for the PID controller.
+        Keyword arguments:
+        max_rate -- maximum rate of change for the process variable
+        dev_gain -- derivative gain of the PID controller
+        pro_gain -- proportional gain of the PID controller
+        int_gain -- integral gain of the PID controller
+        pid_setpoint -- setpoint for the PID controller
         """
         self.ser.write_float(686, max_rate, 2)
         self.ser.write_float(676, pro_gain, 2)  # P gain
         self.ser.write_float(678, int_gain, 2)  # I gain
         self.ser.write_float(680, dev_gain, 2)  # D Gain
-        self.ser.write_float(544, PID_setpoint, 2)  # Current Setpoint 1
+        self.ser.write_float(544, pid_setpoint, 2)  # Current Setpoint 1
         return
 
     def set_thermocouple(self, couple_type: int = 1) -> None:
-        """
-        Set the type of thermocouple for the heater.
+        """Set the type of thermocouple for the heater.
 
-        Parameters:
-        - couple_type: Type of thermocouple.
+        Keyword arguments:
+        couple_type -- type of thermocouple (default 1)
         """
         self.ser.write_register(643, couple_type, 0, 16, False)  # Thermocouple Type
 
     def get_temp(self) -> float:
-        """
-        Get the current temperature from the heater.
+        """Get the current temperature from the heater.
 
         Returns:
         - Current temperature.
@@ -56,21 +60,16 @@ class Heater:
         return float(temperature)
 
     def run(self) -> None:
-        """
-        Start the heater in run mode.
-        """
+        """Start the heater in run mode."""
         self.ser.write_register(576, 5, 0, 16, False)  # The running mode
         self.ser.write_register(576, 6, 0, 16, False)  # Run Mode
 
     def stop(self) -> None:
-        """
-        Stop the heater.
-        """
+        """Stop the heater."""
         self.ser.write_register(576, 8, 0, 16, False)  # The running mode
 
     def set_action(self, action_value: str) -> None:
-        """
-        Set the action (direct or reverse) for the PID controller.
+        """Set the action (direct or reverse) for the PID controller.
 
         Parameters:
         - action_value: Action value ("direct" or "reverse").
@@ -82,8 +81,7 @@ class Heater:
         return
 
     def action(self, output_value: str) -> None:
-        """
-        Set the action for the heater output.
+        """Set the action for the heater output.
 
         Parameters:
         - output_value: Output action ("off" or "pid").
@@ -95,8 +93,7 @@ class Heater:
         return
 
     def autotune_adaptive(self, enable: bool = False) -> None:
-        """
-        Enable or disable adaptive PID tuning.
+        """Enable or disable adaptive PID tuning.
 
         Parameters:
         - enable: Enable or disable adaptive tuning.
@@ -107,25 +104,24 @@ class Heater:
         # self.ser.write_register(672, 0, 0, 16, False)  # PID Adaptive Control
         # return
 
-    def set_PID_auto(self, max_rate: float, autotune_timeout: int, PID_setpoint: float) -> None:
-        """
-        Set PID parameters for auto-tuning.
+    def set_pid_auto(self, max_rate: float, autotune_timeout: int,
+                     pid_setpoint: float) -> None:
+        """Set PID parameters for auto-tuning.
 
         Parameters:
         - max_rate: Maximum rate of change for the process variable.
         - autotune_timeout: Timeout for auto-tuning in milliseconds.
-        - PID_setpoint: Setpoint for the PID controller.
+        - pid_setpoint: Setpoint for the PID controller.
         """
         autotune_timeout = autotune_timeout * 1000
         self.ser.write_float(686, max_rate, 2)
-        self.ser.write_float(544, PID_setpoint, 2)  # Current Setpoint 1
+        self.ser.write_float(544, pid_setpoint, 2)  # Current Setpoint 1
         self.ser.write_long(674, autotune_timeout, False)
         self.ser.write_register(579, 1, 0, 16, False)  # Autotune Start
         return
 
     def filter_hold(self, filter_knob: int = 0) -> None:
-        """
-        Set the filter value for the heater.
+        """Set the filter value for the heater.
 
         Parameters:
         - filter_knob: Filter knob value.
@@ -140,14 +136,14 @@ class Heater:
 # c1.set_thermocouple()
 # c1.set_action()
 # c1.filter_hold()
-# c1.set_PID(max_rate=1, dev_gain=1, pro_gain=8, int_gain=0, PID_setpoint=70)
+# c1.set_pid(max_rate=1, dev_gain=1, pro_gain=8, int_gain=0, pid_setpoint=70)
 # c1.run()
 #
 # c2 = Heater(port="/dev/ttyACM2", addr=2)
 # c2.set_thermocouple()
 # c2.set_action()
 # c2.filter_hold()
-# c2.set_PID(max_rate=1, dev_gain=1, pro_gain=8, int_gain=0, PID_setpoint=70)
+# c2.set_pid(max_rate=1, dev_gain=1, pro_gain=8, int_gain=0, pid_setpoint=70)
 # c2.run()
 #
 # while(1):

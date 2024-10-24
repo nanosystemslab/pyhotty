@@ -22,11 +22,11 @@
 
 ## OMEGA PID temperature controller
 
-This Python library provides a comprehensive interface for controlling an OMEGA PID temperature controller via Modbus RTU. It supports setting PID parameters, thermocouple types, operational modes, and more. Ideal for precise temperature regulation in industrial and laboratory settings, it simplifies integration with Python projects, enhancing automation and monitoring capabilities.
+This Python library provides a comprehensive interface for controlling an OMEGA PID temperature controller via Modbus RTU. Ideal for precise temperature regulation in industrial and laboratory settings, it simplifies integration with Python projects, enhancing automation and monitoring capabilities.
 
 ## Features
 
-- TODO
+- Set PID parameters, thermocouple types, operational modes, and more.
 
 ## Requirements
 

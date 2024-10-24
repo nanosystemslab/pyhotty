@@ -1,28 +1,34 @@
-import pytest
-from unittest.mock import patch, MagicMock
-from pyhot.pyhot import Heater
+"""Unit tests for Pyhot Lbrary."""
+
 from typing import Any
+from unittest.mock import MagicMock
+from unittest.mock import patch
+
+import pytest
+
+from pyhot.pyhot import Heater
+
 
 # Mocking the minimalmodbus.Instrument class
 @pytest.fixture
 def mock_instrument() -> Any:
-    with patch('minimalmodbus.Instrument', autospec=True) as mock_instrument:
+    with patch("minimalmodbus.Instrument", autospec=True) as mock_instrument:
         yield mock_instrument
 
 def test_heater_init(mock_instrument: Any) -> None:
     # Test initializing the Heater class
     heater = Heater(port="/dev/ttyACM0", addr=1)
-    
+
     mock_instrument.assert_called_once_with("/dev/ttyACM0", 1, mode="rtu")
     assert heater.port == "/dev/ttyACM0"
     assert heater.addr == 1
 
-def test_set_PID(mock_instrument: Any) -> None:
+def test_set_pid(mock_instrument: Any) -> None:
     heater = Heater(port="/dev/ttyACM0", addr=1)
     heater.ser = MagicMock()
 
     # Test setting PID parameters
-    heater.set_PID(1.0, 2.0, 3.0, 4.0, 70.0)
+    heater.set_pid(1.0, 2.0, 3.0, 4.0, 70.0)
 
     heater.ser.write_float.assert_any_call(686, 1.0, 2)
     heater.ser.write_float.assert_any_call(680, 2.0, 2)
