@@ -21,4 +21,6 @@ def test_main_succeeds(capfd: Any) -> None:
     print(type(capfd))
     __main__.main()  # Directly call the main function
     out, err = capfd.readouterr()  # Capture the output
-    assert out is not None # Check that something is printed (you can be more specific here)
+    assert (
+        out is not None
+    )  # Check that something is printed (you can be more specific here)
