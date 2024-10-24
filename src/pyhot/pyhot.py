@@ -108,7 +108,8 @@ class Heater:
         return
         # self.ser.write_register(672, 0, 0, 16, False)  # PID Adaptive Control
         # return
- 
+
+
     def set_pid_auto(self,
                      max_rate: float,
                      autotune_timeout: int,
