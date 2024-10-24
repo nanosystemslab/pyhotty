@@ -1,4 +1,5 @@
 """Test cases for the __main__ module."""
+
 from typing import Any
 
 from pyhot import __main__
