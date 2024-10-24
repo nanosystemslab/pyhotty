@@ -6,7 +6,7 @@ import minimalmodbus  # type: ignore
 
 
 class Heater:
-    """Create heater object.
+    """Create Heater object.
 
     This class provides methods for setting PID parameters, thermocouple types,
     operational modes, and more.
@@ -108,7 +108,6 @@ class Heater:
         return
         # self.ser.write_register(672, 0, 0, 16, False)  # PID Adaptive Control
         # return
-
 
     def set_pid_auto(self,
                      max_rate: float,
