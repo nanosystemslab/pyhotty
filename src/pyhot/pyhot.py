@@ -44,7 +44,6 @@ class Heater:
         self.ser.write_float(678, int_gain, 2)  # I gain
         self.ser.write_float(680, dev_gain, 2)  # D Gain
         self.ser.write_float(544, pid_setpoint, 2)  # Current Setpoint 1
-        return
 
     def set_thermocouple(self, couple_type: int = 1) -> None:
         """Set the type of thermocouple for the heater.
@@ -80,7 +79,6 @@ class Heater:
             self.ser.write_register(673, 1, 0, 16, False)  # PID Action
         elif action_value == "reverse":
             self.ser.write_register(673, 0, 0, 16, False)  # PID Action
-        return
 
     def action(self, output_value: str) -> None:
         """Set the action for the Heater output.
@@ -92,7 +90,6 @@ class Heater:
             self.ser.write_register(1025, 0, 0, 16, False)  # Output 1 Mode
         elif output_value == "pid":
             self.ser.write_register(1025, 1, 0, 16, False)  # Output 1 Mode
-        return
 
     def autotune_adaptive(self, enable: bool = False) -> None:
         """Enable or disable adaptive PID tuning.
@@ -102,7 +99,6 @@ class Heater:
         """
         if enable is True:
             self.ser.write_register(672, 1, 0, 16, False)  # PID Adaptive Control
-        return
         # self.ser.write_register(672, 0, 0, 16, False)  # PID Adaptive Control
         # return
 
@@ -121,7 +117,6 @@ class Heater:
         self.ser.write_float(544, pid_setpoint, 2)  # Current Setpoint 1
         self.ser.write_long(674, autotune_timeout, False)
         self.ser.write_register(579, 1, 0, 16, False)  # Autotune Start
-        return
 
     def filter_hold(self, filter_knob: int = 0) -> None:
         """Set the filter value for the heater.
@@ -131,7 +126,6 @@ class Heater:
         """
         filter_knob = int(filter_knob)
         self.ser.write_register(655, filter_knob, 0, 16, False)  # Filter
-        return
 
 
 # Example usage:
