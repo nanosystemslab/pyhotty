@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyhotty"
-version = "0.0.1"
+version = "0.0.2"
 description = "Pyhotty"
 authors = ["Nanosystems Lab <fnslab@hawaii.edu>"]
 license = "GPL-3.0"
