@@ -1,4 +1,4 @@
-"""Unit tests for Pyhot Lbrary."""
+"""Unit tests for Pyhotty Lbrary."""
 
 from typing import Any
 from unittest.mock import MagicMock
@@ -6,7 +6,7 @@ from unittest.mock import patch
 
 import pytest
 
-from pyhot.pyhot import Heater
+from pyhotty.pyhotty import Heater
 
 
 @pytest.fixture

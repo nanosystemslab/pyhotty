@@ -1,8 +1,8 @@
 # Reference
 
-## pyhot
+## pyhotty
 
 ```{eval-rst}
-.. automodule:: pyhot
+.. automodule:: pyhotty
    :members:
 ```

@@ -1,7 +1,7 @@
 # Usage
 
 ```{eval-rst}
-.. click:: pyhot.__main__:main
-    :prog: pyhot
+.. click:: pyhotty.__main__:main
+    :prog: pyhotty
     :nested: full
 ```

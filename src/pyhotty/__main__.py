@@ -2,11 +2,11 @@
 
 
 def main() -> None:
-    """Pyhot."""
+    """Pyhotty."""
 
 
 # if __name__ == "__main__":
-#     main(prog_name="pyhot")  # pragma: no cover
+#     main(prog_name="pyhotty")  # pragma: no cover
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 """Sphinx configuration."""
 
-project = "Pyhot"
+project = "Pyhotty"
 author = "Nanosystems Lab"
 copyright = "2024, Nanosystems Lab"
 extensions = [

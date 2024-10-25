@@ -1,19 +1,19 @@
 [tool.poetry]
-name = "pyhot"
+name = "pyhotty"
 version = "0.0.1"
-description = "Pyhot"
+description = "Pyhotty"
 authors = ["Nanosystems Lab <fnslab@hawaii.edu>"]
 license = "GPL-3.0"
 readme = "README.md"
-homepage = "https://github.com/nanosystemslab/pyhot"
-repository = "https://github.com/nanosystemslab/pyhot"
-documentation = "https://pyhot.readthedocs.io"
+homepage = "https://github.com/nanosystemslab/pyhotty"
+repository = "https://github.com/nanosystemslab/pyhotty"
+documentation = "https://pyhotty.readthedocs.io"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
 ]
 
 [tool.poetry.urls]
-Changelog = "https://github.com/nanosystemslab/pyhot/releases"
+Changelog = "https://github.com/nanosystemslab/pyhotty/releases"
 
 [tool.poetry.dependencies]
 python = ">=3.9, <4.0"
@@ -47,7 +47,7 @@ xdoctest = {extras = ["colors"], version = ">=0.15.10"}
 myst-parser = {version = ">=0.16.1"}
 
 [tool.poetry.scripts]
-pyhot = "pyhot.__main__:main"
+pyhotty = "pyhotty.__main__:main"
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
@@ -55,7 +55,7 @@ tests = ["tests", "*/tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["pyhot", "tests"]
+source = ["pyhotty", "tests"]
 
 [tool.coverage.report]
 show_missing = true

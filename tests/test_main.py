@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from pyhot import __main__
+from pyhotty import __main__
 
 
 # @pytest.fixture

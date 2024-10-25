@@ -1,22 +1,22 @@
-# Pyhot
+# Pyhotty
 
-[![PyPI](https://img.shields.io/pypi/v/pyhot.svg)][pypi status]
-[![Status](https://img.shields.io/pypi/status/pyhot.svg)][pypi status]
-[![Python Version](https://img.shields.io/pypi/pyversions/pyhot)][pypi status]
-[![License](https://img.shields.io/pypi/l/pyhot)][license]
+[![PyPI](https://img.shields.io/pypi/v/pyhotty.svg)][pypi status]
+[![Status](https://img.shields.io/pypi/status/pyhotty.svg)][pypi status]
+[![Python Version](https://img.shields.io/pypi/pyversions/pyhotty)][pypi status]
+[![License](https://img.shields.io/pypi/l/pyhotty)][license]
 [![DOI](https://zenodo.org/badge/732227593.svg)](https://zenodo.org/doi/10.5281/zenodo.10719950)
 
-[![Read the documentation at https://pyhot.readthedocs.io/](https://img.shields.io/readthedocs/pyhot/latest.svg?label=Read%20the%20Docs)][read the docs]
-[![Tests](https://github.com/nanosystemslab/pyhot/workflows/Tests/badge.svg)][tests]
-[![Codecov](https://codecov.io/gh/nanosystemslab/pyhot/branch/main/graph/badge.svg)][codecov]
+[![Read the documentation at https://pyhotty.readthedocs.io/](https://img.shields.io/readthedocs/pyhotty/latest.svg?label=Read%20the%20Docs)][read the docs]
+[![Tests](https://github.com/nanosystemslab/pyhotty/workflows/Tests/badge.svg)][tests]
+[![Codecov](https://codecov.io/gh/nanosystemslab/pyhotty/branch/main/graph/badge.svg)][codecov]
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
 
-[pypi status]: https://pypi.org/project/pyhot/
-[read the docs]: https://pyhot.readthedocs.io/
-[tests]: https://github.com/nanosystemslab/pyhot/actions?workflow=Tests
-[codecov]: https://app.codecov.io/gh/nanosystemslab/pyhot
+[pypi status]: https://pypi.org/project/pyhotty/
+[read the docs]: https://pyhotty.readthedocs.io/
+[tests]: https://github.com/nanosystemslab/pyhotty/actions?workflow=Tests
+[codecov]: https://app.codecov.io/gh/nanosystemslab/pyhotty
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [black]: https://github.com/psf/black
 
@@ -34,10 +34,10 @@ This Python library provides a comprehensive interface for controlling an OMEGA 
 
 ## Installation
 
-You can install _Pyhot_ via [pip] from [PyPI]:
+You can install _Pyhotty_ via [pip] from [PyPI]:
 
 ```console
-$ pip install pyhot
+$ pip install pyhotty
 ```
 
 ## Usage
@@ -52,16 +52,16 @@ To learn more, see the [Contributor Guide].
 ## License
 
 Distributed under the terms of the [GPL 3.0 license][license],
-_Pyhot_ is free and open source software.
+_Pyhotty_ is free and open source software.
 
 ## Citation
 
 If you use this project in your research, please cite it using the following BibTeX entry:
 
 ```bibtex
-@software{pyhot,
+@software{pyhotty,
   author       = {Nakamura, Matthew and Renzo Claudio, Josh},
-  title        = {nanosystemslab/pyhot: Initial Release of Library},
+  title        = {nanosystemslab/pyhotty: Initial Release of Library},
   month        = feb,
   year         = 2024,
   publisher    = {Zenodo},
@@ -83,11 +83,11 @@ This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter]
 [@cjolowicz]: https://github.com/cjolowicz
 [pypi]: https://pypi.org/
 [hypermodern python cookiecutter]: https://github.com/cjolowicz/cookiecutter-hypermodern-python
-[file an issue]: https://github.com/nanosystemslab/pyhot/issues
+[file an issue]: https://github.com/nanosystemslab/pyhotty/issues
 [pip]: https://pip.pypa.io/
 
 <!-- github-only -->
 
-[license]: https://github.com/nanosystemslab/pyhot/blob/main/LICENSE
-[contributor guide]: https://github.com/nanosystemslab/pyhot/blob/main/CONTRIBUTING.md
-[command-line reference]: https://pyhot.readthedocs.io/en/latest/usage.html
+[license]: https://github.com/nanosystemslab/pyhotty/blob/main/LICENSE
+[contributor guide]: https://github.com/nanosystemslab/pyhotty/blob/main/CONTRIBUTING.md
+[command-line reference]: https://pyhotty.readthedocs.io/en/latest/usage.html

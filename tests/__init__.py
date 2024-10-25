@@ -1,1 +1,1 @@
-"""Test suite for the pyhot package."""
+"""Test suite for the pyhotty package."""
