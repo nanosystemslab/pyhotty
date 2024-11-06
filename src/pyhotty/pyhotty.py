@@ -1,4 +1,4 @@
-"""Library for control of a Omega PID Temperature Controller."""
+"""Library for control of an Omega PID Temperature Controller."""
 
 from typing import Union
 
@@ -10,14 +10,18 @@ class Heater:
 
     This class provides methods for setting PID parameters, thermocouple types,
     operational modes, and more.
+
+    Attributes:
+        port (str): The serial port where the Heater is connected (default "").
+        addr (Union[int, None]): The modbus address of the Heater (default None).
     """
 
-    def __init__(self, port: str = "", addr: Union[int, None] = None):
-        """Constructor for the Heater class.
+    def __init__(self, port: str = "", addr: Union[int, None] = None) -> None:
+        """Initialize the Heater class.
 
-        Arguments:
-            port (str): serial port where the Heater is connected (default "")
-            addr (Union[int, None]): modbus address of the Heater (default None)
+        Args:
+            port (str): Define the serial port to connect the Heater to (default "").
+            addr (Union[int, None]): modbus address of the Heater (default None).
         """
         self.port = port
         self.addr = addr
@@ -31,14 +35,14 @@ class Heater:
         int_gain: float,
         pid_setpoint: float,
     ) -> None:
-        """Set PID parameters for the heater.
+        """Set PID parameters for the Heater.
 
-        Arguments:
-            max_rate (float): maximum rate of change for the process variable
-            dev_gain (float): derivative gain of the PID controller
-            pro_gain (float): proportional gain of the PID controller
-            int_gain (float): integral gain of the PID controller
-            pid_setpoint (float): setpoint for the PID controller
+        Args:
+            max_rate (float): The maximum rate of change for the process variable.
+            dev_gain (float): The derivative gain of the PID controller.
+            pro_gain (float): The proportional gain of the PID controller.
+            int_gain (float): The integral gain of the PID controller.
+            pid_setpoint (float): The setpoint for the PID controller.
         """
         self.ser.write_float(686, max_rate, 2)
         self.ser.write_float(676, pro_gain, 2)  # P gain
@@ -47,34 +51,38 @@ class Heater:
         self.ser.write_float(544, pid_setpoint, 2)  # Current Setpoint 1
 
     def set_thermocouple(self, couple_type: int = 1) -> None:
-        """Set the type of thermocouple for the heater.
+        """Set the type of thermocouple for the Heater.
 
-        Arguments:
-            couple_type (int): type of thermocouple (default 1)
+        Args:
+            couple_type (int): The type of thermocouple (default 1).
         """
         self.ser.write_register(643, couple_type, 0, 16, False)  # Thermocouple Type
 
     def get_temp(self) -> float:
-        """Get the current temperature from the heater."""
+        """Get the current temperature from the Heater.
+        
+        Returns:
+            The current temperature from the Heater in 
+        """
         temperature = self.ser.read_float(528, 3, 2)  # Current Input Value
         temperature = "%.4f" % temperature
         temperature = f"{temperature:{6}.{6}}"
         return float(temperature)
 
     def run(self) -> None:
-        """Start the heater in run mode."""
+        """Start the Heater in run mode."""
         self.ser.write_register(576, 5, 0, 16, False)  # The running mode
         self.ser.write_register(576, 6, 0, 16, False)  # Run Mode
 
     def stop(self) -> None:
-        """Stop the heater."""
+        """Stop the Heater."""
         self.ser.write_register(576, 8, 0, 16, False)  # The running mode
 
     def set_action(self, action_value: str) -> None:
         """Set the action (direct or reverse) for the PID controller.
 
-        Arguments:
-            action_value (str): action value ("direct" or "reverse")
+        Args:
+            action_value (str): The desired action value ("direct" or "reverse").
         """
         if action_value == "direct":
             self.ser.write_register(673, 1, 0, 16, False)  # PID Action
@@ -84,8 +92,8 @@ class Heater:
     def action(self, output_value: str) -> None:
         """Set the action for the Heater output.
 
-        Arguments:
-            output_value (str): output action ("off" or "pid").
+        Args:
+            output_value (str): The desired output action ("off" or "pid").
         """
         if output_value == "off":
             self.ser.write_register(1025, 0, 0, 16, False)  # Output 1 Mode
@@ -95,8 +103,8 @@ class Heater:
     def autotune_adaptive(self, enable: bool = False) -> None:
         """Enable or disable adaptive PID tuning.
 
-        Arguments:
-            enable (bool): enable or disable adaptive tuning (default False)
+        Args:
+            enable (bool): Enable or disable adaptive tuning (default False).
         """
         if enable is True:
             self.ser.write_register(672, 1, 0, 16, False)  # PID Adaptive Control
@@ -108,10 +116,10 @@ class Heater:
     ) -> None:
         """Set PID parameters for auto-tuning.
 
-        Arguments:
-            max_rate (float): maximum rate of change for the process variable
-            autotune_timeout (int): timeout for auto-tuning in milliseconds
-            pid_setpoint (float): setpoint for the PID controller
+        Args:
+            max_rate (float): The maximum rate of change for the process variable.
+            autotune_timeout (int): The timeout for auto-tuning in milliseconds.
+            pid_setpoint (float): The setpoint for the PID controller.
         """
         autotune_timeout = autotune_timeout * 1000
         self.ser.write_float(686, max_rate, 2)
@@ -120,10 +128,10 @@ class Heater:
         self.ser.write_register(579, 1, 0, 16, False)  # Autotune Start
 
     def filter_hold(self, filter_knob: int = 0) -> None:
-        """Set the filter value for the heater.
+        """Set the filter value for the Heater.
 
-        Arguments:
-            filter_knob (int): filter knob value (default 0)
+        Args:
+            filter_knob (int): The filter knob value (default 0).
         """
         filter_knob = int(filter_knob)
         self.ser.write_register(655, filter_knob, 0, 16, False)  # Filter

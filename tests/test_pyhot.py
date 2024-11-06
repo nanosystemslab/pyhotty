@@ -64,7 +64,7 @@ def test_get_temp(mock_instrument: Any) -> None:
 
 
 def test_run(mock_instrument: Any) -> None:
-    """Test running the heater."""
+    """Test running the Heater."""
     heater = Heater(port="/dev/ttyACM0", addr=1)
     heater.ser = MagicMock()
 
@@ -75,7 +75,7 @@ def test_run(mock_instrument: Any) -> None:
 
 
 def test_stop(mock_instrument: Any) -> None:
-    """Test stopping the heater."""
+    """Test stopping the Heater."""
     heater = Heater(port="/dev/ttyACM0", addr=1)
     heater.ser = MagicMock()
 
