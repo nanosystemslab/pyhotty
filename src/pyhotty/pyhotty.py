@@ -60,9 +60,9 @@ class Heater:
 
     def get_temp(self) -> float:
         """Get the current temperature from the Heater.
-        
+
         Returns:
-            The current temperature from the Heater in 
+            The current temperature from the Heater in degrees Celsius.
         """
         temperature = self.ser.read_float(528, 3, 2)  # Current Input Value
         temperature = "%.4f" % temperature
