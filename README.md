@@ -54,23 +54,6 @@ To learn more, see the [Contributor Guide].
 Distributed under the terms of the [GPL 3.0 license][license],
 _Pyhotty_ is free and open source software.
 
-## Citation
-
-If you use this project in your research, please cite it using the following BibTeX entry:
-
-```bibtex
-@software{pyhotty,
-  author       = {Nakamura, Matthew and Renzo Claudio, Josh},
-  title        = {nanosystemslab/pyhotty: Initial Release of Library},
-  month        = feb,
-  year         = 2024,
-  publisher    = {Zenodo},
-  version      = {v0.0.1},
-  doi          = {10.5281/zenodo.10719952},
-  url          = {https://doi.org/10.5281/zenodo.10719952}
-}
-```
-
 ## Issues
 
 If you encounter any problems,
@@ -78,12 +61,12 @@ please [file an issue] along with a detailed description.
 
 ## Credits
 
-This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter] template.
+This project was generated from [@nanosystemslab]'s [Nanosystems Lab Python Cookiecutter] template.
 
-[@cjolowicz]: https://github.com/cjolowicz
+[@nanosystemslab]: https://github.com/nanosystemslab
 [pypi]: https://pypi.org/
-[hypermodern python cookiecutter]: https://github.com/cjolowicz/cookiecutter-hypermodern-python
-[file an issue]: https://github.com/nanosystemslab/pyhotty/issues
+[nanosystems lab python cookiecutter]: https://github.com/nanosystemslab/cookiecutter-nanosystemslab
+[file an issue]: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/issues
 [pip]: https://pip.pypa.io/
 
 <!-- github-only -->
