@@ -78,12 +78,12 @@ please [file an issue] along with a detailed description.
 
 ## Credits
 
-This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter] template.
+This project was generated from [@nanosystemslab]'s [Nanosystems Lab Python Cookiecutter] template.
 
-[@cjolowicz]: https://github.com/cjolowicz
+[@nanosystemslab]: https://github.com/nanosystemslab
 [pypi]: https://pypi.org/
-[hypermodern python cookiecutter]: https://github.com/cjolowicz/cookiecutter-hypermodern-python
-[file an issue]: https://github.com/nanosystemslab/pyhotty/issues
+[Nanosystems Lab Python Cookiecutter]: https://github.com/nanosystemslab/cookiecutter-nanosystemslab
+[file an issue]: https://github.com/{{cookiecutter.github_user}}/{{cookiecutter.project_name}}/issues
 [pip]: https://pip.pypa.io/
 
 <!-- github-only -->
